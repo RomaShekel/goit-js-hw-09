@@ -133,20 +133,3 @@ img:hover {
 }
 
 
-
-
-.simple-lightbox {
-  background-color: rgba(46, 47, 66, 0.80); 
-}
-
-.sl-wrapper .sl-close {
-  width: 32px;
-  height: 32px;
-  color: white;
-
-}
-
-.sl-image {
-  width: 1112px;
-  height: 640px;
-}

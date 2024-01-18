@@ -1,6 +1,5 @@
 
-
-const STOREGE_KEY = "feedback-form-state";
+const STORAGE_KEY = "feedback-form-state";
 
 const form = document.querySelector(".feedback-form");
 const textarea = form.querySelector("textarea");
@@ -8,49 +7,39 @@ const input = form.querySelector("input");
 
 
 
+if(localStorage.getItem != ""){
 try {
-    const initialFormValue = JSON.parse(localStorage.getItem(STOREGE_KEY));
 
-    Array.from(form.elements).forEach(element => {
+    const initialFormValue = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        
+     Array.from(form.elements).forEach(element => {
         const storageValue = initialFormValue[element.name];
 
         if (storageValue) {
             element.value = storageValue;
-        };
-        
+        };        
     })
-
 } catch {
-    console.log("PARSE ERROR");
+    console.log("LOCAL STORAGE IS EMPTY OR PARSE ERROR");
 };
-
-
+}
 
 const formObject = {};
-
 form.addEventListener("input", () => {
-
     const formValue = new FormData(form);
 
-    
     formValue.forEach((value, key) => {
         formObject[key] = value;
     }) 
 
-    localStorage.setItem(STOREGE_KEY, JSON.stringify(formObject));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formObject.trim()));
 });
-
 
 
 form.addEventListener("submit", (eventSubmit) => {
     eventSubmit.preventDefault();
-
-    console.log(JSON.parse(localStorage.getItem(STOREGE_KEY)))
-    localStorage.removeItem(STOREGE_KEY);
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)))
+    localStorage.removeItem(STORAGE_KEY);
     form.reset();
 });
-
-
-
-
 

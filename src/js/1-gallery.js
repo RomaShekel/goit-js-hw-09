@@ -85,17 +85,7 @@ images.forEach((image) => {
     gallery.insertAdjacentHTML('beforeend', galleryItem);
 });
 
-const lightbox = new SimpleLightbox('.gallery a', {overlay: true, captions: true});
-
-
-
-// lightbox.on('show.simplelightbox', function () {
-
-//     const currentImage = lightbox.currentImage;
-  
-
-//     setTimeout(function () {
-      
-//       currentImage.querySelector('img').setAttribute('data-description', currentImage.querySelector('img').alt);
-//     }, 250);
-//   });
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250
+});
