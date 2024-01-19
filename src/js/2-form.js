@@ -19,7 +19,7 @@ try {
             element.value = storageValue;
         };        
     })
-} catch {
+} catch (error){
     console.log("LOCAL STORAGE IS EMPTY OR PARSE ERROR");
 };
 }
@@ -29,10 +29,11 @@ form.addEventListener("input", () => {
     const formValue = new FormData(form);
 
     formValue.forEach((value, key) => {
-        formObject[key] = value;
-    }) 
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formObject.trim()));
+        formObject[key] = value.trim();
+    }); 
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formObject));
 });
 
 
