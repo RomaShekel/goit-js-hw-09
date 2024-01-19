@@ -7,7 +7,7 @@ const input = form.querySelector("input");
 
 
 
-if(localStorage.getItem != ""){
+if(localStorage.getItem(STORAGE_KEY) !== null){
 try {
 
     const initialFormValue = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -24,7 +24,7 @@ try {
 };
 }
 
-const formObject = {};
+let formObject = {};
 form.addEventListener("input", () => {
     const formValue = new FormData(form);
 
